@@ -1,19 +1,19 @@
 pipeline {
     agent any
-    stages {
-        stage('Test') {
-            steps {
-                dir ('complete') {
+    
+    dir ('complete') {
+        stages {
+            stage('Test') {
+                steps {
                     sh './gradlew check'
                 }
             }
         }
-    }
-    post {
-        always {
-            dir ('complete') {
-                junit 'build/test-results/**/*.xml'
+        post {
+            always {
+                junit 'build/test-results/**/*.xml' 
             }
         }
     }
+
 }
