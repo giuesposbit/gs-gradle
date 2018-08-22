@@ -6,14 +6,14 @@ pipeline {
             stage('Build') {
                 steps {
                     dir ('complete') {
-                        sh './gradlew build'
+                        sh './gradlew clean build'
                     }
                 }
             }
             stage('Test') {
                 steps {
                     dir ('complete') {
-                        sh './gradlew clean test'
+                        sh './gradlew check'
                     }
                 }
             }
