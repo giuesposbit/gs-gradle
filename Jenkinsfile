@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     parameters {
-        booleanParam(defaultValue: 'complete', description: '', name: 'workingDir')
+        string(name: 'workingDir', defaultValue: 'complete', description: 'La deirectory del repository in cui c\'e il sorgente')
     }
     
     stages {
