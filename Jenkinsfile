@@ -6,18 +6,22 @@ pipeline {
     }
     
     stages {
-        dir ('complete') {
+        
             stage('Build') {
                 steps {
-                    sh './gradlew build'
+                    dir ('complete') {
+                        sh './gradlew build'
+                    }
                 }
             }
             stage('Test') {
                 steps {
-                    sh './gradlew check'
+                    dir ('complete') {
+                        sh './gradlew check'
+                    }
                 }
             }
-        }
+        
     }
 
     post {
