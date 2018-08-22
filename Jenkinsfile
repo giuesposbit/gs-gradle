@@ -3,13 +3,17 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh './complete/gradlew check'
+                dir ('complete') {
+                    sh './gradlew check'
+                }
             }
         }
     }
     post {
         always {
-            junit './complete/build/test-results/*.xml'
+            dir ('complete') {
+                junit './complete/build/test-results/*.xml'
+            }
         }
     }
 }
