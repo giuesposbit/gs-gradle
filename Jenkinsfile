@@ -12,7 +12,7 @@ pipeline {
     post {
         always {
             dir ('complete') {
-                junit './complete/build/test-results/*.xml'
+                junit './build/test-results/*.xml'
             }
         }
     }
