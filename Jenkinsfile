@@ -24,7 +24,7 @@ pipeline {
             always {
                 dir ('complete') {
                     archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
-                    junit 'build/reports/**/*.xml'
+                    junit 'build/test-results/**/*.xml'
                 }
             }
     }
