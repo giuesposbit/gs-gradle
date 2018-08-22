@@ -13,7 +13,7 @@ pipeline {
             stage('Test') {
                 steps {
                     dir ('complete') {
-                        sh './gradlew check'
+                        sh './gradlew clean test'
                     }
                 }
             }
