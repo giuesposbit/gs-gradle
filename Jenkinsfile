@@ -2,21 +2,21 @@ pipeline {
     agent any
     
     parameters {
-        booleanParam(defaultValue: true, description: '', name: 'workingDir')
+        booleanParam(defaultValue: 'complete', description: '', name: 'workingDir')
     }
     
     stages {
         
             stage('Build') {
                 steps {
-                    dir ('complete') {
+                    dir ('${params.workingDir}') {
                         sh './gradlew build'
                     }
                 }
             }
             stage('Test') {
                 steps {
-                    dir ('complete') {
+                    dir ('${params.workingDir}') {
                         sh './gradlew check'
                     }
                 }
@@ -27,7 +27,7 @@ pipeline {
     post {
         
             always {
-                dir ('complete') {
+                dir ('${params.workingDir}') {
                     archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
                     junit 'build/reports/**/*.xml'
                 }
