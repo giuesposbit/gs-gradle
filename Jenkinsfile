@@ -6,7 +6,7 @@ pipeline {
             stage('Build') {
                 steps {
                     dir ('complete') {
-                        sh './gradlew clean build'
+                        sh './gradlew build'
                     }
                 }
             }
