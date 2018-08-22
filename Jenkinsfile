@@ -17,6 +17,11 @@ pipeline {
                     }
                 }
             }
+            stage('Procedo?') {
+                steps {
+                    input "Does the staging environment look ok?"
+                }
+            }
         
     }
 
