@@ -26,6 +26,8 @@ pipeline {
                     archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
                     junit 'build/test-results/**/*.xml'
                 }
+                echo 'One way or another, I have finished'
+                deleteDir() /* clean up our workspace */
             }
     }
 }
