@@ -1,20 +1,18 @@
 pipeline {
     agent any
    
-    parameters { string(name: 'workingDir', defaultValue: 'complete', description: '') }
-    
     stages {
         
             stage('Build') {
                 steps {
-                    dir ("${params.workingDir}") {
+                    dir ('complete') {
                         sh './gradlew build'
                     }
                 }
             }
             stage('Test') {
                 steps {
-                    dir ("${params.workingDir}") {
+                    dir ('complete') {
                         sh './gradlew check'
                     }
                 }
@@ -24,7 +22,7 @@ pipeline {
 
     post {
             always {
-                dir ("${params.workingDir}") {
+                dir ('complete') {
                     archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
                     junit 'build/reports/**/*.xml'
                 }
