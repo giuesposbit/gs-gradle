@@ -22,7 +22,7 @@ pipeline {
 
     post {
             always {
-                mail to: 'serbo83@gmail.com', subject: "Pipeline: ${currentBuild.fullDisplayName}", body: "Build: ${env.BUILD_URL}"
+                //mail to: 'serbo83@gmail.com', subject: "Pipeline: ${currentBuild.fullDisplayName}", body: "Build: ${env.BUILD_URL}"
                 dir ('complete') {
                     archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
                     junit 'build/test-results/**/*.xml'
