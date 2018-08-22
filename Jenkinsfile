@@ -25,11 +25,13 @@ pipeline {
     }
 
     post {
-        dir ('complete') {
+        
             always {
-                archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
-                junit 'build/reports/**/*.xml'
+                dir ('complete') {
+                    archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
+                    junit 'build/reports/**/*.xml'
+                }
             }
-        }
+        
     }
 }
